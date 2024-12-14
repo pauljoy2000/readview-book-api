@@ -1,4 +1,4 @@
-package com.readview.book_service.book.service;
+package com.readview.book_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

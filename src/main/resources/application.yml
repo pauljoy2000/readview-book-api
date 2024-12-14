@@ -1,0 +1,40 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: book-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_db
+    username: <<db-username>>
+    password: <<db-password>>
+    driver-class-name: org.postgresql.Driver
+
+    liquibase:
+      change-log: classpath:/db/changelog/db.changelog-master.xml
+
+    jpa:
+      hibernate:
+        ddl-auto: none
+      show-sql: false
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          show-sql: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:7000/eureka
+
+app:
+  services:
+    user-service:
+      id: user-service
+      endpoints:
+        token-validation: /auth/validate
